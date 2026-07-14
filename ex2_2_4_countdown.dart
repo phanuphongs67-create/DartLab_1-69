@@ -1,0 +1,14 @@
+Stream<String> countdown(int from) async* {
+  for (int i = from; i >= 0; i--) {
+    yield i.toString();
+    await Future.delayed(Duration(seconds: 1));
+  }
+
+  yield "หมดเวลา!";
+}
+
+Future<void> main() async {
+  await for (var message in countdown(5)) {
+    print(message);
+  }
+}
